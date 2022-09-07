@@ -1,4 +1,7 @@
 import app from "./src/app";
+import * as dotenv from 'dotenv';
 
-app.listen(3000)
+dotenv.config()
+
+app.listen(process.env.PORT)
 console.log('Server running on localhost:3000')
