@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Operation {
+  id String @id @default(uuid()) 
+  concept String @db.VarChar(255)
+  ammount Decimal @db.Decimal(10, 2)
+  type OperationType @default(INCOME)
+  date DateTime @default(now())
+}
+
+enum OperationType {
+  INCOME
+  EXPENSE
+}
